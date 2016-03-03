@@ -8,13 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 public class MainActivity extends Activity {
     //there's not much interesting happening. when the buttons are pressed, they start
     //the PhoneToWatchService with the cat name passed in.
 
-    private EditText zipCode;
+    EditText zipCode;
+    private Button enterZipCode;
     private Button currentLocation;
 
     @Override
@@ -22,14 +22,20 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        zipCode = (EditText) findViewById(R.id.zip_code);
-        currentLocation = (Button) findViewById(R.id.curr_loc);
+        zipCode = (EditText) findViewById(R.id.zip_text);
+        enterZipCode = (Button) findViewById(R.id.zip_btn);
+        currentLocation = (Button) findViewById(R.id.currloc_btn);
 
-        zipCode.setOnClickListener(new View.OnClickListener() {
+        enterZipCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //enter code for using the zip code
+                Intent homeIntent = new Intent(getBaseContext(), HomeActivity.class);
+                startActivity(homeIntent);
+
                 Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-                sendIntent.putExtra("CAT_NAME", "Zip Code");
+                sendIntent.putExtra("ENTER_LOC", "ZipCode");
                 startService(sendIntent);
             }
         });
@@ -37,9 +43,17 @@ public class MainActivity extends Activity {
         currentLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent homeIntent = new Intent(getBaseContext(), HomeActivity.class);
+                startActivity(homeIntent);
+
                 Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
-                sendIntent.putExtra("CAT_NAME", "Lexy");
+                sendIntent.putExtra("ENTER_LOC", "CurrentLocation");
                 startService(sendIntent);
+
+//                Intent sendIntent = new Intent(getBaseContext(), PhoneToWatchService.class);
+//                sendIntent.putExtra("CAT_NAME", "Current Location");
+//                startService(sendIntent);
             }
         });
 

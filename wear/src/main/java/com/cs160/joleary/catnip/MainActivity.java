@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
         Bundle extras = intent.getExtras();
 
         if (extras != null) {
-            String catName = extras.getString("CAT_NAME");
-            mFeedBtn.setText("Feed " + catName);
+            String enterLoc = extras.getString("ENTER_LOC");
+            mFeedBtn.setText("Using " + enterLoc);
         }
 
         mFeedBtn.setOnClickListener(new View.OnClickListener() {

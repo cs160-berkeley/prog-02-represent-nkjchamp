@@ -48,7 +48,7 @@ public class PhoneToWatchService extends Service {
         // Which cat do we want to feed? Grab this info from INTENT
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
-        final String catName = extras.getString("CAT_NAME");
+        final String enterLoc = extras.getString("ENTER_LOC");
 
         // Send the message with the cat name
         new Thread(new Runnable() {
@@ -57,7 +57,7 @@ public class PhoneToWatchService extends Service {
                 //first, connect to the apiclient
                 mApiClient.connect();
                 //now that you're connected, send a massage with the cat name
-                sendMessage("/" + catName, catName);
+                sendMessage("/" + enterLoc, enterLoc);
             }
         }).start();
 
