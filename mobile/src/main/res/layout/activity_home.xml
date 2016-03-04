@@ -44,4 +44,89 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="81dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sen1"
+        android:id="@+id/sen1_name"
+        android:layout_alignBaseline="@+id/sen1_sOrR"
+        android:layout_alignBottom="@+id/sen1_sOrR"
+        android:layout_toStartOf="@+id/home_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sen1 Party"
+        android:id="@+id/sen1_party"
+        android:layout_alignTop="@+id/sen1_sOrR"
+        android:layout_toEndOf="@+id/rep1_btn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sen1 Sen or Rep"
+        android:id="@+id/sen1_sOrR"
+        android:layout_marginTop="67dp"
+        android:layout_below="@+id/home_title"
+        android:layout_alignEnd="@+id/sen1_btn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Sen2"
+        android:id="@+id/sen2_name"
+        android:layout_alignBottom="@+id/sen2_sOrR"
+        android:layout_alignStart="@+id/sen1_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sen2 Sen or Rep"
+        android:id="@+id/sen2_sOrR"
+        android:layout_above="@+id/sen2_btn"
+        android:layout_alignEnd="@+id/sen2_btn"
+        android:layout_marginBottom="26dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sen2 Party"
+        android:id="@+id/sen2_party"
+        android:layout_alignTop="@+id/sen2_sOrR"
+        android:layout_toEndOf="@+id/rep1_btn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Rep"
+        android:id="@+id/rep1_name"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/sen2_btn"
+        android:layout_alignStart="@+id/sen2_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Rep Sen or Rep"
+        android:id="@+id/rep1_sOrR"
+        android:layout_alignTop="@+id/rep1_name"
+        android:layout_alignEnd="@+id/sen2_btn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Sen1 Party"
+        android:id="@+id/textView6"
+        android:layout_alignTop="@+id/rep1_sOrR"
+        android:layout_alignStart="@+id/sen2_party" />
+
 </RelativeLayout>

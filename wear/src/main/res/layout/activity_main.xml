@@ -5,6 +5,14 @@
     tools:context=".MainActivity" android:orientation="vertical" tools:deviceIds="wear_round"
     android:background="@drawable/food_bg_160">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Member"
+        android:id="@+id/mem_text"
+        android:layout_gravity="center_horizontal" />
+
     <TextView android:id="@+id/time" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""

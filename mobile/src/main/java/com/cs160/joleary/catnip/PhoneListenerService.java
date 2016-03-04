@@ -18,8 +18,11 @@ import java.nio.charset.StandardCharsets;
  */
 public class PhoneListenerService extends WearableListenerService {
 
-//   WearableListenerServices don't need an iBinder or an onStartCommand: they just need an onMessageReceieved.
-private static final String TOAST = "/send_toast";
+    //   WearableListenerServices don't need an iBinder or an onStartCommand: they just need an onMessageReceieved.
+    private static final String TOAST = "/send_toast";
+    private static final String SEN1 = "/Sen1";
+    private static final String SEN2 = "/Sen2";
+    private static final String REP = "/Rep";
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
@@ -40,6 +43,37 @@ private static final String TOAST = "/send_toast";
             //''sending message to a Handler on a dead thread''... that's okay. but don't do this.
             // replace sending a toast with, like, starting a new activity or something.
             // who said skeleton code is untouchable? #breakCSconceptions
+
+        } else if( messageEvent.getPath().equalsIgnoreCase(SEN1) ) {
+
+            String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
+            Intent intent = new Intent(this, DetailedActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            //you need to add this flag since you're starting a new activity from a service
+            intent.putExtra("MEMBER", "Sen1");
+            Log.d("T", "about to start watch DetailedActivity with MEMBER: Sen1");
+            startActivity(intent);
+
+        } else if( messageEvent.getPath().equalsIgnoreCase(SEN2) ) {
+
+                String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
+                Intent intent = new Intent(this, DetailedActivity.class );
+                intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+                //you need to add this flag since you're starting a new activity from a service
+                intent.putExtra("MEMBER", "Sen2");
+                Log.d("T", "about to start watch DetailedActivity with MEMBER: Sen1");
+                startActivity(intent);
+
+        } else if( messageEvent.getPath().equalsIgnoreCase(REP) ) {
+
+            String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
+            Intent intent = new Intent(this, DetailedActivity.class );
+            intent.addFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+            //you need to add this flag since you're starting a new activity from a service
+            intent.putExtra("MEMBER", "Rep");
+            Log.d("T", "about to start watch DetailedActivity with MEMBER: Sen1");
+            startActivity(intent);
+
 
         } else {
             super.onMessageReceived( messageEvent );

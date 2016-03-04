@@ -62,11 +62,12 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
                 .setResultCallback(new ResultCallback<NodeApi.GetConnectedNodesResult>() {
                     @Override
                     public void onResult(NodeApi.GetConnectedNodesResult getConnectedNodesResult) {
+
                         nodes = getConnectedNodesResult.getNodes();
                         Log.d("T", "found nodes");
                         //when we find a connected node, we populate the list declared above
                         //finally, we can send a message
-                        sendMessage("/send_toast", "Good job!");
+                        sendMessage("/Sen1", "Sen1");
                         Log.d("T", "sent");
                     }
                 });
@@ -77,9 +78,27 @@ public class WatchToPhoneService extends Service implements GoogleApiClient.Conn
 
     private void sendMessage(final String path, final String text ) {
         for (Node node : nodes) {
+            //Log.d(node)
             Wearable.MessageApi.sendMessage(
                     mWatchApiClient, node.getId(), path, text.getBytes());
         }
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        Bundle extras = intent.getExtras();
+        final String member = extras.getString("MEMBER");
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mWatchApiClient.connect();
+                sendMessage("/" + member, member);
+            }
+        }).start();
+
+        return START_STICKY;
     }
 
 }
